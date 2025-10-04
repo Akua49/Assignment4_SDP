@@ -1,40 +1,42 @@
-## UML Diagram
+# Bridge Pattern Implementation - Shape Rendering System
+
+## UML Class Diagram
 
 ```mermaid
 classDiagram
     class Shape {
         <<abstract>>
         -Renderer renderer
-        +Shape(Renderer)
-        +draw() void
+        +Shape(Renderer renderer)
+        +draw()* void
     }
     
     class Circle {
         -float radius
-        +Circle(float, Renderer)
+        +Circle(float radius, Renderer renderer)
         +draw() void
     }
     
     class Square {
         -float side
-        +Square(float, Renderer)
+        +Square(float side, Renderer renderer)
         +draw() void
     }
     
     class Renderer {
         <<interface>>
-        +renderCircle(float) void
-        +renderSquare(float) void
+        +renderCircle(float radius) void
+        +renderSquare(float side) void
     }
     
     class VectorRenderer {
-        +renderCircle(float) void
-        +renderSquare(float) void
+        +renderCircle(float radius) void
+        +renderSquare(float side) void
     }
     
     class RasterRenderer {
-        +renderCircle(float) void
-        +renderSquare(float) void
+        +renderCircle(float radius) void
+        +renderSquare(float side) void
     }
     
     Shape <|-- Circle
@@ -42,3 +44,14 @@ classDiagram
     Renderer <|.. VectorRenderer
     Renderer <|.. RasterRenderer
     Shape o--> Renderer
+```
+
+## Key Relationships:
+- **Shape** ← **Circle**, **Square** (inheritance)
+- **Renderer** ← **VectorRenderer**, **RasterRenderer** (interface implementation)  
+- **Shape** → **Renderer** (composition - THE BRIDGE)
+
+## Design Pattern Structure:
+- **Abstraction**: Shape, Circle, Square
+- **Implementation**: Renderer, VectorRenderer, RasterRenderer
+- **Bridge**: Composition between Shape and Renderer
