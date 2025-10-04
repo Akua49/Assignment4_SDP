@@ -5,36 +5,36 @@ classDiagram
     class Shape {
         <<abstract>>
         -Renderer renderer
-        +Shape(Renderer)
+        +Shape(Renderer renderer)
         +draw()* void
     }
     
     class Circle {
         -float radius
-        +Circle(float, Renderer)
+        +Circle(float radius, Renderer renderer)
         +draw() void
     }
     
     class Square {
         -float side
-        +Square(float, Renderer)
+        +Square(float side, Renderer renderer)
         +draw() void
     }
     
     class Renderer {
         <<interface>>
-        +renderCircle(float) void
-        +renderSquare(float) void
+        +renderCircle(float radius) void
+        +renderSquare(float side) void
     }
     
     class VectorRenderer {
-        +renderCircle(float) void
-        +renderSquare(float) void
+        +renderCircle(float radius) void
+        +renderSquare(float side) void
     }
     
     class RasterRenderer {
-        +renderCircle(float) void
-        +renderSquare(float) void
+        +renderCircle(float radius) void
+        +renderSquare(float side) void
     }
     
     Shape <|-- Circle
@@ -42,3 +42,4 @@ classDiagram
     Renderer <|.. VectorRenderer
     Renderer <|.. RasterRenderer
     Shape o--> Renderer
+```
