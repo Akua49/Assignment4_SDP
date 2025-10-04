@@ -1,9 +1,10 @@
+```mermaid
 classDiagram
     class Shape {
         <<abstract>>
         -Renderer renderer
         +Shape(Renderer)
-        +draw()* void
+        +draw() void
     }
 
     class Circle {
