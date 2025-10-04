@@ -1,4 +1,4 @@
-# Bridge Pattern Implementation - Shape Rendering System
+# Bridge Pattern Implementation
 
 ## UML Class Diagram
 
@@ -45,13 +45,3 @@ classDiagram
     Renderer <|.. RasterRenderer
     Shape o--> Renderer
 ```
-
-## Key Relationships:
-- **Shape** ← **Circle**, **Square** (inheritance)
-- **Renderer** ← **VectorRenderer**, **RasterRenderer** (interface implementation)  
-- **Shape** → **Renderer** (composition - THE BRIDGE)
-
-## Design Pattern Structure:
-- **Abstraction**: Shape, Circle, Square
-- **Implementation**: Renderer, VectorRenderer, RasterRenderer
-- **Bridge**: Composition between Shape and Renderer
