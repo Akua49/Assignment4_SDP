@@ -42,4 +42,3 @@ classDiagram
     Renderer <|.. VectorRenderer
     Renderer <|.. RasterRenderer
     Shape o--> Renderer
-```
